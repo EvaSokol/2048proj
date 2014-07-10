@@ -43,4 +43,7 @@ public class start {
 		kbd.pressKey(Keys.ARROW_RIGHT);
 	}
 	
+	static WebDriver getDriver() {
+		return driver;
+	}
 }
