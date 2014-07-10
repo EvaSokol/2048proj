@@ -29,6 +29,18 @@ public class KeyboardTest {
 	}
 	
 	@Test
+	public void test5() {
+		actions.isNewRecord();
+	}
+	
+	@Test
+	public void test6() {
+		actions.newGame();
+		test1();
+		test5();
+	}
+	
+	@Test
 	public void test9() {
 		start.driver.quit();
 	}
