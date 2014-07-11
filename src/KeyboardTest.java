@@ -25,7 +25,10 @@ public class KeyboardTest {
 	
 	@Test
 	public void test4() {
-		assertEquals(actions.getBest(), actions.getResult());
+		start.keyUp();
+		start.keyDown();
+		start.keyLeft();
+		start.keyRight();
 	}
 	
 	@Test
