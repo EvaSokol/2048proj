@@ -47,7 +47,7 @@ public class actions {
 		
 		int best = pobj.getBest();
 		int res = pobj.getResult();
-		
+	
 		System.out.println("res= " + res + " best= " + best);
 		
 		if (res >= best)
@@ -60,17 +60,7 @@ public class actions {
 			System.out.println("No new record");
 			return false;
 			}
-		
-//		if (pobj.getResult().compareTo(pobj.getBest()) == 0)
-//			{	
-//				System.out.println("New record!");
-//				return true;
-//			}	
-//		else 
-//			{
-//			System.out.println("No new record");
-//			return false;
-//			}
+
 	} 
 	
 	static void newGame() {
