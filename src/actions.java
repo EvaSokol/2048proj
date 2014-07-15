@@ -1,15 +1,25 @@
+import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.HasInputDevices;
 import org.openqa.selenium.interactions.Keyboard;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.gargoylesoftware.htmlunit.javascript.host.Element;
+import com.thoughtworks.selenium.ScreenshotListener;
 
 
-public class actions {
+public class actions{
 
 	static WebDriver driver = start.getDriver();
 	
@@ -29,7 +39,8 @@ public class actions {
 	}
 		
 	static void moveRandom() {
-		int i = (int)(Math.random()*4);
+		int i = (int)(Math.random()*4)+1;
+		System.out.println(i);
 		
 		switch (i) {
 			case 1: keyUp();
@@ -53,6 +64,7 @@ public class actions {
 		if (res >= best)
 		{	
 			System.out.println("New record!");
+			getSS();
 			return true;
 		}	
 		else 
@@ -83,4 +95,17 @@ public class actions {
 		start.kbd.pressKey(Keys.ARROW_RIGHT);
 	}
 
+	static void getSS() {
+		
+		
+		File ssf = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        try {
+			FileUtils.copyFile(ssf, new File(pobj.getBest()+".png"), true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
 }

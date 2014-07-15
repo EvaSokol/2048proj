@@ -5,9 +5,12 @@ public class JustPlayTheGame {
 		// TODO Auto-generated method stub
 
 		start.open();
-		actions.playGame();
-		actions.isNewRecord();
-		start.finish();	
+		
+		while (true) {
+			actions.playGame();
+			actions.isNewRecord();
+			actions.newGame();
+		}	
 		
 	}
 
