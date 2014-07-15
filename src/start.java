@@ -14,7 +14,7 @@ public class start {
 	static WebDriver driver = new FirefoxDriver();
 	static Keyboard kbd = ((HasInputDevices)driver).getKeyboard();
 	
-	{
+	static {
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
 	
@@ -26,24 +26,12 @@ public class start {
 	void open(String url) {
 		driver.get(url);
 	}
-	
-	static void keyUp() {
-		kbd.pressKey(Keys.ARROW_UP);
-	}
-	
-	static void keyDown() {
-		kbd.pressKey(Keys.ARROW_DOWN);
-	}
-	
-	static void keyLeft() {
-		kbd.pressKey(Keys.ARROW_LEFT);
-	}
-	
-	static void keyRight() {
-		kbd.pressKey(Keys.ARROW_RIGHT);
-	}
-	
+		
 	static WebDriver getDriver() {
 		return driver;
+	}
+	
+	static void finish() {
+		start.driver.quit();
 	}
 }

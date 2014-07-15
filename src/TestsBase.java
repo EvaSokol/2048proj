@@ -2,11 +2,10 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 
-public class ActionTest {
+public class TestsBase {
 
-	public ActionTest() {
+	public TestsBase() {
 		super();
 	}
 
@@ -16,42 +15,37 @@ public class ActionTest {
 		
 	}
 	
-//	@Test
-	public void moveKeys() {
-		start.keyUp();
-		start.keyDown();
-		start.keyLeft();
-		start.keyRight();
+	public void moveKeysOnce() {
+		actions.moveKeysOnce();
 	}
-
-//	@Test
+	
+	public void playGame() {
+		actions.playGame();
+	}
+	
 	public void getResult() {
-		actions.getResult();
+		pobj.getResult();
 	}
 
-//	@Test
 	public void getBest() {
-		actions.getBest();
+		pobj.getBest();
 	}
 
-//	@Test
 	public void assertResultBest() {
-		assertEquals(actions.getBest(), actions.getResult());
+		assertEquals(pobj.getBest(), pobj.getResult());
 	}
 
-//	@Test
 	public void checkRecord() {
 		actions.isNewRecord();
 	}
 
-//	@Test
 	public void startGame() {
 		actions.newGame();
 	}
 
 	@After
 	public void finish() {
-		start.driver.quit();
+		start.finish();
 	}
 
 }

@@ -13,50 +13,84 @@ public class actions {
 
 	static WebDriver driver = start.getDriver();
 	
-	boolean analyse() {
-		
-		
-		return true;
+	static public void playGame() {
+		do 
+		{
+			actions.moveRandom();
+		}
+		while (pobj.isNotGameOver());
 	}
 	
-	static String getResult() {
-		String d = driver.findElement(By.xpath(".//div[@class='score-container' and not(@class='score-addition')]")).getText();
-		
-		System.out.println(d);
-		
-//		String d1 = driver.findElement(By.xpath(".//div[@class='score-container']")).getText();
-//		System.out.println(d1);
-//		
-//		String d2 = driver.findElement(By.xpath("html/body/div[1]/div[1]/div/div[1]")).getText();
-//		System.out.println(d2);
-		
-		return d;
+	static public void moveKeysOnce() {
+		actions.keyUp();
+		actions.keyDown();
+		actions.keyLeft();
+		actions.keyRight();
 	}
-	
-	static String getBest() {
-		String d = driver.findElement(By.xpath(".//div[@class='best-container']")).getText();
-		System.out.println("Best = "+ d);
 		
-		return d;
+	static void moveRandom() {
+		int i = (int)(Math.random()*4);
+		
+		switch (i) {
+			case 1: keyUp();
+					break;
+			case 2: keyDown();
+					break;
+			case 3: keyLeft();
+					break;
+			case 4: keyRight();
+					break;
+		}
 	}
 	
 	static boolean isNewRecord(){
 		
-		if (getResult().compareTo(getBest()) == 0)
-			{	
-				System.out.println("New record!");
-				return true;
-			}	
+		int best = pobj.getBest();
+		int res = pobj.getResult();
+		
+		System.out.println("res= " + res + " best= " + best);
+		
+		if (res >= best)
+		{	
+			System.out.println("New record!");
+			return true;
+		}	
 		else 
 			{
 			System.out.println("No new record");
 			return false;
 			}
+		
+//		if (pobj.getResult().compareTo(pobj.getBest()) == 0)
+//			{	
+//				System.out.println("New record!");
+//				return true;
+//			}	
+//		else 
+//			{
+//			System.out.println("No new record");
+//			return false;
+//			}
 	} 
 	
 	static void newGame() {
-		WebElement btn =  driver.findElement(By.xpath(".//a[@class='restart-button']"));
-		btn.click();
+		pobj.newGameBtn().click();
 	} 
+
+	static void keyUp() {
+		start.kbd.pressKey(Keys.ARROW_UP);
+	}
 	
+	static void keyDown() {
+		start.kbd.pressKey(Keys.ARROW_DOWN);
+	}
+	
+	static void keyLeft() {
+		start.kbd.pressKey(Keys.ARROW_LEFT);
+	}
+	
+	static void keyRight() {
+		start.kbd.pressKey(Keys.ARROW_RIGHT);
+	}
+
 }
