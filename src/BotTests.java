@@ -3,7 +3,7 @@ import org.junit.Test;
 public class BotTests extends TestsBase {
 	
 	@Test
-	public void BaseSimpleKeysTest() {
+	public void baseSimpleKeysTest() {
 		startGame();
 		moveKeysOnce();
 		checkRecord();
@@ -13,7 +13,7 @@ public class BotTests extends TestsBase {
 	}
 	
 	@Test
-	public void RandomMovesTest() {
+	public void randomMovesTest() {
 		startGame();
 		playGame();
 		checkRecord();
@@ -21,9 +21,5 @@ public class BotTests extends TestsBase {
 		playGame();
 		checkRecord();
 	}
-
-	@Test
-	public void resultTest() {
-		
-	}
+	
 }

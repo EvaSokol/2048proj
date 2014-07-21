@@ -2,62 +2,50 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.interactions.HasInputDevices;
-import org.openqa.selenium.interactions.Keyboard;
-import org.openqa.selenium.remote.Augmenter;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.WebElement;
-
-import com.gargoylesoftware.htmlunit.javascript.host.Element;
-import com.thoughtworks.selenium.ScreenshotListener;
 
 
-public class actions{
+public class Actions{
 
-	static WebDriver driver = start.getDriver();
+	static WebDriver Driver = Start.getDriver();
 	
 	static public void playGame() {
 		do 
 		{
-			actions.moveRandom();
+			Actions.moveRandom();
 		}
-		while (pobj.isNotGameOver());
+		while (Pobj.isNotGameOver());
 	}
 	
 	static public void moveKeysOnce() {
-		actions.keyUp();
-		actions.keyDown();
-		actions.keyLeft();
-		actions.keyRight();
+		Actions.keyUp();
+		Actions.keyDown();
+		Actions.keyLeft();
+		Actions.keyRight();
 	}
 		
 	static void moveRandom() {
-		int i = (int)(Math.random()*4)+1;
-		System.out.println(i);
-		
+		int i = (int)(Math.random()*4);
+				
 		switch (i) {
-			case 1: keyUp();
+			case 0: keyUp();
 					break;
-			case 2: keyDown();
+			case 1: keyDown();
 					break;
-			case 3: keyLeft();
+			case 2: keyLeft();
 					break;
-			case 4: keyRight();
+			case 3: keyRight();
 					break;
 		}
 	}
 	
 	static boolean isNewRecord(){
 		
-		int best = pobj.getBest();
-		int res = pobj.getResult();
+		int best = Pobj.getBest();
+		int res = Pobj.getResult();
 	
 		System.out.println("res= " + res + " best= " + best);
 		
@@ -76,31 +64,31 @@ public class actions{
 	} 
 	
 	static void newGame() {
-		pobj.newGameBtn().click();
+		Pobj.newGameBtn().click();
 	} 
 
 	static void keyUp() {
-		start.kbd.pressKey(Keys.ARROW_UP);
+		Pobj.newGameBtn().sendKeys(Keys.ARROW_UP);
 	}
 	
 	static void keyDown() {
-		start.kbd.pressKey(Keys.ARROW_DOWN);
+		Pobj.newGameBtn().sendKeys(Keys.ARROW_DOWN);
 	}
 	
 	static void keyLeft() {
-		start.kbd.pressKey(Keys.ARROW_LEFT);
+		Pobj.newGameBtn().sendKeys(Keys.ARROW_LEFT);
 	}
 	
 	static void keyRight() {
-		start.kbd.pressKey(Keys.ARROW_RIGHT);
+		Pobj.newGameBtn().sendKeys(Keys.ARROW_RIGHT);
 	}
 
 	static void getSS() {
 		
 		
-		File ssf = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		File ssf = ((TakesScreenshot)Driver).getScreenshotAs(OutputType.FILE);
         try {
-			FileUtils.copyFile(ssf, new File(pobj.getBest()+".png"), true);
+			FileUtils.copyFile(ssf, new File(Pobj.getBest()+".png"), true);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

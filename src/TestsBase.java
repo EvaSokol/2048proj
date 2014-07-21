@@ -11,41 +11,41 @@ public class TestsBase {
 
 	@Before
 	public void openBrowser() {
-		start.open();
+		Start.open();
 		
 	}
 	
 	public void moveKeysOnce() {
-		actions.moveKeysOnce();
+		Actions.moveKeysOnce();
 	}
 	
 	public void playGame() {
-		actions.playGame();
+		Actions.playGame();
 	}
 	
 	public void getResult() {
-		pobj.getResult();
+		Pobj.getResult();
 	}
 
 	public void getBest() {
-		pobj.getBest();
+		Pobj.getBest();
 	}
 
 	public void assertResultBest() {
-		assertEquals(pobj.getBest(), pobj.getResult());
+		assertEquals(Pobj.getBest(), Pobj.getResult());
 	}
 
 	public void checkRecord() {
-		actions.isNewRecord();
+		Actions.isNewRecord();
 	}
 
 	public void startGame() {
-		actions.newGame();
+		Actions.newGame();
 	}
 
 	@After
 	public void finish() {
-		start.finish();
+		Start.finish();
 	}
 
 }
